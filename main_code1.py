@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 """
-Created on Fri Feb 26 00:38:58 2021
+Created on Fri Mar 6 01:38:58 2021
 
-@author: anisumitaya
+
+@author: Sristi
 """
-#import filehandle
+import filehandle
 import dailycomm 
-# streets,cars,stime=filehandle.ret()
+streets,cars,stime=filehandle.ret()
 # #print(streets)
 # #print(cars)
 # route_to_inter=[]
@@ -67,23 +68,33 @@ OP=[str(len(begs.keys()))+'\n']
 def greenlight(OP):
     for mkey in ends:
         OP.append(mkey+'\n')
-        OP.append(str(len(ends[mkey]))+'\n')
+        #OP.append(str(len(ends[mkey]))+'\n')
         outl=[]
         #count=0
+        summ=[]
+        eachline=[]
         for key in mapp2:
            
             # print("key",key)
             if key in accmap:
                 if key in ends[mkey]:
                     if accmap[key]!=0:
-                        outl+=[key +' '+str(accmap[key]) +'\n']
-               #     count+=1
+                        summ.append(accmap[key])
+                        eachline.append(key)
         # if count>0:
         #     OP.append(str(count)+'\n')
         #     count=0
         # print("OP",OP)
         # print('outl',outl)
+        for line in eachline:
+            #if accmap[line]/sum(summ)<1:
+                
+           # print("Summ= ",summ)
+            #print("accmap[line]=",accmap[line])
+            outl+=[line +' '+str(round((accmap[line]/sum(summ))*stime)) +'\n']
+        outl.insert(0,str(len(eachline))+'\n')
         OP=OP+outl
+       
                     
     return OP
        #OP gives roads and the time for green light cycle for each intersection
@@ -104,7 +115,7 @@ def greenlight(OP):
     # return OP
 
 stuff=greenlight(OP)
-f=open("SubbF.txt",'w')
+f=open("SubbD.txt",'w')
 f.writelines(stuff)
 f.close()
             
