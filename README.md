@@ -21,7 +21,7 @@ F – Forever jammed
 Total score
 7,977,729 points
 
-#The above score was machieved in the extended round.
+#The above score was achieved in the extended round.
 
 
 The code for the larger traffic datasets like D and F required alloting 1 second to each incoming road at each intersection for green light.
